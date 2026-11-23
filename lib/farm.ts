@@ -51,7 +51,7 @@ export function chainFeeProfile(chain: string): ChainFeeProfile {
     return { gasToken: chain, setupGasUsd: 0.8, weeklyGasUsd: 0.25, unwindGasUsd: 0.5, feeNote: 'keep a $8 native gas buffer' };
   }
   // L2s and modern EVM chains (Base, Arbitrum, Optimism, Monad, Ink, Plume, Arc, etc.)
-  return { gasToken: 'ETH/native gas', setupGasUsd: 0.5, weeklyGasUsd: 0.15, unwindGasUsd: 0.3, feeNote: 'keep a $5 L2 gas buffer' };
+  return { gasToken: 'ETH/native', setupGasUsd: 0.5, weeklyGasUsd: 0.15, unwindGasUsd: 0.3, feeNote: 'keep a $5 L2 gas buffer' };
 }
 
 /** Format dollar gas figures cleanly without noisy decimals. */
