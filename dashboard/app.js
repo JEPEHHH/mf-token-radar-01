@@ -233,8 +233,9 @@
   }
 
   function renderFormulaBand() {
+    const boardCats = new Set(DATA.rows.map((r) => r.category || 'Uncategorized'));
     const topCats = Object.values(DATA.calibration.by_category)
-      .filter((c) => c.peer_count >= 3)
+      .filter((c) => c.peer_count >= 3 && boardCats.has(c.category))
       .sort((a, b) => b.peer_count - a.peer_count)
       .slice(0, 6);
 
@@ -734,7 +735,7 @@
         <span class="mono">Base ${fmtUsd(m.base_value_usd)}</span>
       </div>
       <div class="factor-list">
-        ${factorBar(`Category (${m.category_peer_count} peers)`, m.category_multiple * 2.5, `${m.category_multiple.toFixed(3)}x`, false)}
+        ${factorBar(`Category (${m.category_peer_count} peer${m.category_peer_count === 1 ? '' : 's'})`, m.category_multiple * 2.5, `${m.category_multiple.toFixed(3)}x`, false)}
         ${factorBar(`7d Momentum (${fmtPct(row.change_7d)})`, m.growth_multiplier, `${m.growth_multiplier.toFixed(3)}x`, m.growth_multiplier < 1)}
         ${factorBar(`Age Maturity (${fmtAge(row.age_days)})`, m.maturity_multiplier, `${m.maturity_multiplier.toFixed(3)}x`, m.maturity_multiplier < 0.85)}
         ${factorBar(`Multi-Chain (${m.chain_count} ch)`, m.multichain_multiplier, `${m.multichain_multiplier.toFixed(3)}x`, false)}
