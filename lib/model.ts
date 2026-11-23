@@ -63,11 +63,11 @@ export interface ModelConfig {
 
 export const DEFAULT_MODEL: ModelConfig = {
   version: 'peer-bayes-v2',
-  prior_strength: 4,
-  peer_ratio_floor: 0.03,
-  peer_ratio_cap: 2.0,
+  prior_strength: 6,
+  peer_ratio_floor: 0.04,
+  peer_ratio_cap: 1.0,
   multiple_floor: 0.08,
-  multiple_cap: 0.85,
+  multiple_cap: 0.8,
   growth_floor_pct: -50,
   growth_cap_pct: 120,
   growth_weight: 0.45,
